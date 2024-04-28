@@ -1,0 +1,143 @@
+:root {
+    --color-gray: #1d1d1d;
+    --color-bg: #000;
+    --color-line-separator: #8d8c8c;
+    --color-green: #16a085;
+    --font: 'Quicksand', sans-serif;
+    --font-color: #ffffff;
+    --white-color: #ffffff;
+
+    --footer-height: 5vh;
+    --navbar-height: 10vh;
+    --container-height: cal(100vh - var(--navbar-height));
+
+    --lateral-menu-size: 150px;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: var(--font);
+    color: var(--font-color);
+}
+
+/* --------------------------- Navbar ---------------------------*/
+.navbar_container {
+    max-height: var(--navbar-height);
+    border-bottom: 1px solid var(--color-line-separator);
+    background-color: var(--color-gray);
+}
+
+.navbar {
+    width: 95vw;
+    margin: auto;
+    padding: 5px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar .menu_bars {
+    margin: auto;
+    cursor: pointer;
+    font-size: 40px;
+    color: var(--color-green);
+}
+
+/* --------------------------- Container ---------------------------*/
+.container_base {
+    height: 100vh;
+    background-color: var(--color-bg);
+}
+
+.container {
+    height: var(--container-height);
+    display: flex;
+    flex-direction: column;
+}
+
+.input_text_container {
+    height: calc(100vh - (var(--footer-height) + var(--navbar-height)));
+    margin: auto;
+    padding: 10px 0;
+}
+
+#text_area {
+    width: 95vw;
+    height: 100%;
+    padding: 12px 8px;
+    border-radius: 5px;
+    border: 1px solid var(--color-line-separator);
+    background-color: var(--color-gray);
+    color: var(--font-color);
+    resize: none;
+}
+
+/* --------------------------- General styles ---------------------------*/
+.button_container {
+    padding: 4px 8px;
+    cursor: pointer;
+    border-radius: 3px;
+    border: 1px solid var(--color-line-separator);
+    background: none;
+    color: var(--font-color);
+}
+
+.footer_container {
+    margin: auto;
+}
+
+.footer {
+    height: var(--footer-height);
+    text-align: right;
+    color: var(--font-color);
+}
+
+/* -------------------- Lateral menu show | hidden --------------------*/
+.lateral_menu {
+    width: var(--lateral-menu-size);
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: calc(-1 * var(--lateral-menu-size));
+    border-right: 1px solid var(--color-line-separator);
+    background: rgba(51, 50, 50, 0.5);
+    backdrop-filter: blur(10px);
+}
+
+.lateral_menu_show {
+    transform: translateX(var(--lateral-menu-size));
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.lateral_menu_hidden {
+    transform: calc(-1 * translateX(var(--lateral-menu-size)));
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+/* --------------------------- Scroll bar ---------------------------*/
+/* Works on Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-green) var(--white-color);
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+    width: 12px;
+}
+
+*::-webkit-scrollbar-track {
+    background: var(--white-color);
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: var(--color-green);
+    border-radius: 20px;
+    border: 3px solid var(--white-color);
+}

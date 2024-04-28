@@ -1,0 +1,22 @@
+<!-- templates/index.html -->
+
+{% extends 'base.html' %}
+{% block title %}
+    {{ super() }}
+    Index
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="input_text_container">
+        <p contenteditable="true" name="" id="text_area" cols="30" rows="10">
+            Lorem ipsum dolor, sit amet consectlore etur
+            elit. Impedit, quod mollitia fugit iste enim accusantium
+            ex ea dicta, possimus vero ad saepe nobis. Saepe
+            libero cumque, iusto minus nisi sapiente?</textarea>
+    </div>
+    {% block footer %}
+        {% include 'footer.html' %}
+    {% endblock %}
+</div>
+{% endblock %}
