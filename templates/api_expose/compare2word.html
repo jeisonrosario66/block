@@ -1,0 +1,56 @@
+{% if (wordA and wordB) %}
+<p style="display: none;" id="wordA">{{wordA}}</p>
+<p style="display: none;" id="wordB">{{wordB}}</p>
+
+<p id="result"></p>
+
+<script src="{{ url_for('static', filename='js/algorithm.mjs') }}"></script>
+<script defer src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script>
+    window.onload = function () {
+        let wordA_forAnalysis = document.getElementById('wordA').textContent;
+        let wordB_forAnalysis = document.getElementById('wordB').textContent;
+        let result = document.getElementById('result').textContent;
+
+        let wordA_postAnalysis = "";
+        let wordB_postAnalysis = "";
+
+        //console.log("wordA_forAnalysis: ",wordA_forAnalysis)
+        //console.log("wordB_forAnalysis: ",wordB_forAnalysis)
+
+        for (let isLetter = 0; isLetter < wordA_forAnalysis.length; isLetter++) {
+            let letter = wordA_forAnalysis[isLetter];
+            if (letter.charCodeAt() >= 97 && letter.charCodeAt() <= 122) {
+                wordA_postAnalysis += letter;
+            };
+        };
+        for (let isLetter = 0; isLetter < wordB_forAnalysis.length; isLetter++) {
+            let letter = wordB_forAnalysis[isLetter];
+            if (letter.charCodeAt() >= 97 && letter.charCodeAt() <= 122) {
+                wordB_postAnalysis += letter;
+            };
+        };
+
+        //console.log("wordA_forAnalysis: ",wordA_postAnalysis)
+        //console.log("wordB_forAnalysis: ",wordB_postAnalysis)
+
+        let isItRhyme = new IsItRhyme();
+        let compare2Word = isItRhyme.compare2Word(wordA_postAnalysis, wordB_postAnalysis)
+
+        $.ajax({
+            url: `/api/compare2word/${wordA_postAnalysis}-${wordB_postAnalysis}`,
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify({ dataRhyme: compare2Word}),
+            success: function (response) {
+                let jsonString = JSON.stringify(response, "null", 4);
+
+                $('#result').text(jsonString);
+            },
+            error: function (error) {
+                console.error("Error in the POST request:", error);
+            },
+        });
+    };
+</script>
+{% endif %}

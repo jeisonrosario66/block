@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+{% block head %}
+    <title>
+        Not found
+    </title>
+{% endblock %}
+
+{% block body %}
+    <p>Invalid or empty url: "{{url}}"</p>
+
+    <p>Valid url: "{{urlRedirec}}"</p>
+
+    <p>Example: "<a href="{{urlRedirec}}">{{urlRedirec}}</a>"</p>
+
+{% endblock %}
