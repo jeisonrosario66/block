@@ -273,4 +273,4 @@ function IsItRhyme(contex) {
 // -----------------------------------------------------------------------------
 
 //let clase = new IsItRhyme(textArea);
-export { IsItRhyme };
+//export { IsItRhyme };
